@@ -1,0 +1,25 @@
+-R cubes/ Cubes
+-R forcing/ Forcing
+
+forcing/TFUtils.v
+forcing/translation_utils.v
+forcing/TemplateForcing.v
+forcing/Inductives.v
+forcing/Tests.v
+forcing/GRTT.v
+forcing/GRTT_SProp.v
+forcing/Stream.v
+forcing/Soundness.v
+
+cubes/axioms.v
+cubes/sprop_utils.v
+cubes/hott_lemmas.v
+cubes/arith_lemmas.v
+cubes/cubes.v
+cubes/cubic_dec.v
+cubes/cartesian.v
+cubes/forcing_setup.v
+cubes/interval.v
+cubes/ax1.v
+cubes/ax2.v
+cubes/ax3_ax4.v

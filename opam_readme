@@ -1,0 +1,35 @@
+Mémo opam
+
+Opam est censé permettre l'utilisation de plusieurs environnements de manière simple, dans les faits
+ça marche jamais.
+
+L'environnement pour le forcing des cubes est situé dans /home/hakase/Projets/coq.8.8.sprop . Ce
+dossier est le opamroot, dans lequel opam installe tout ce qu'on lui demande. C'est là qu'est le
+compilateur ocaml entre autres.
+Le switch correspond au choix de la version du compilateur (je crois ? peut-être que ça peut choisir
+beaucoup plus que ça). La version utilisée est 4.02.3.
+
+Typiquement, le processus pour initialiser opam est (*)
+$ opam init --root=/home/hakase/Projets/coq.8.8.sprop/ --switch=4.02.3
+$ eval (opam env --set-root)
+
+Si tout s'est bien passé :
+$ opam switch devrait montrer la bonne version du compilo
+$ which ocaml devrait montrer un binaire situé dans le opamroot
+$ which coqtop également
+
+Coq et TemplateCoq doivent avoir été compilés avec cet environnement précis. En général, c'est pas
+la peine de recompiler quoi que ce soit (faudrait vraiment une update pas sympa de quelque chose).
+
+Signes que l'environnement est mal setup :
+- coqtop n'arrive pas à localiser le préfixe Template
+- la compilation de templatecoq échoue car 'File not found on loadpath : template_plugin.cmxs'
+- etc
+
+(*)
+opam init suggère d'aller modifier /home/hakase/.config/fish/config.fish pour charger
+automatiquement l'environnement initialisé. Je pense que ça ne casse rien.
+En revanche, le fichiers de config fish générés par opam
+($opamroot)/.opam/opam-init/variables.fish
+est cassé. Pour le réparer, il suffit de retirer les guillemets autour de $PATH et $MANPATH. Comme
+il casse le path, c'est un peu pénible à aller réparer dans le terminal tout cassé.
